@@ -1,5 +1,6 @@
 package com.app.cooks.impl;
 
+import com.app.DataUtil;
 import com.app.cooks.interfaces.FullFunctionalCook;
 import org.apache.commons.lang3.mutable.MutableInt;
 
@@ -13,6 +14,6 @@ public class CakeCook implements FullFunctionalCook {
     @Override
     public void cook(MutableInt currentCake) {
         currentCake.increment();
-        System.out.println("Cake cook got: " + currentCake + " dishes");
+        System.out.println("Cake cook got: " + currentCake + " dishes" + " " + DataUtil.getCurrentLocalDateTimeStamp());
     }
 }

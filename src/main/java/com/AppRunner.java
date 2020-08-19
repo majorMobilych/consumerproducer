@@ -11,6 +11,7 @@ import org.apache.commons.lang3.mutable.MutableInt;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class AppRunner {
 
@@ -23,10 +24,10 @@ public class AppRunner {
     private static final Object teaLock = new Object();
     private static final List<Object> locks = List.of(borschtLock, cakeLock, teaLock);
 
-    private static final int amountOfConsumers = 3;
+    private static final int amountOfConsumers = 30;
 
     public static void main(String[] args) {
-        FullFunctionalCook borschtCook = new BorschtCook();
+ FullFunctionalCook borschtCook = new BorschtCook();
         FullFunctionalCook cakeCook = new CakeCook();
         FullFunctionalCook teaCook = new TeaCook();
 
@@ -43,7 +44,8 @@ public class AppRunner {
                                     List.of(300L, 300L, 300L),
                                     List.of(borschtCookBefore, cakeCookBefore, teaCookBefore),
                                     new DishesConsumer(),
-                                    locks
+                                    locks,
+                                    i
                             )
             );
         }

@@ -1,5 +1,6 @@
 package com.app.factories;
 
+import com.app.DataUtil;
 import com.app.cooks.interfaces.FullFunctionalCook;
 import org.apache.commons.lang3.mutable.MutableInt;
 
@@ -13,6 +14,7 @@ public final class CookThreadFactory {
         return new Thread(() -> {
             while (true) {
                 synchronized (lock) {
+                    DataUtil.getCurrentLocalDateTimeStamp();
                     //Если блюд больше 10 -> ждем;
                     if (cookedBefore.intValue() >= 10) {
                         try {
